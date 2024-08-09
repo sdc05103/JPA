@@ -1,5 +1,7 @@
 package com.example.JPA.child;
 import com.example.JPA.parent.Parent;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -16,6 +18,7 @@ public class Child {
 
     @ManyToOne
     @JoinColumn(name = "parent_id")
+//    @JsonIgnoreProperties("parent")
     Parent parent;
 
     public Child(int id, String name, Parent parent) {
@@ -24,5 +27,15 @@ public class Child {
         this.parent = parent;
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public Parent getParent() {
+        return parent;
+    }
+
+    public int getId() {
+        return id;
+    }
 }

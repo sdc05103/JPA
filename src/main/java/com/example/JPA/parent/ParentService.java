@@ -12,8 +12,17 @@ public class ParentService {
         this.parentRepository = parentRepository;
     }
 
-    @Transactional
     public void saveParent(Parent parent){
         parentRepository.save(parent);
+    }
+
+    public Parent findParent(String id){
+        Parent p =  parentRepository.findById(id).orElseThrow();
+        return p;
+    }
+
+    public Parent findParentByName(String name){
+        Parent p = parentRepository.findByName(name).orElseThrow();
+        return p;
     }
 }

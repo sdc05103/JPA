@@ -11,10 +11,13 @@ public class ChildService {
     public ChildService(ChildRepository childRepository) {
         this.childRepository = childRepository;
     }
-    @Transactional
+
     public void saveChild(Child child){
         childRepository.save(child);
     }
 
+    public Child findChild(int id){
+       return childRepository.findById(1).orElseThrow();
+    }
 
 }
